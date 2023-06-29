@@ -104,9 +104,10 @@ jobs:
           name: dist
           path: dist
       - name: E2E tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         with:
           command: npm run test:e2e
+          record: false
           start: npm run start-test
           wait-on: http://localhost:5000
 
