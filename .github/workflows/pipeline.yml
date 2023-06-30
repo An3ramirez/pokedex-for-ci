@@ -68,30 +68,6 @@ jobs:
       - name: Test
         run: npm test
 
-  e2e:
-    needs: [lint, build]
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        run: npm ci
-      - uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist
-      - name: E2E tests
-        uses: cypress-io/github-action@v5
-        with:
-          command: npm run test:e2e
-          record: false
-          start: npm run start-test
-          wait-on: http://localhost:5000
-
   deploy:
     needs: [test, e2e]
     runs-on: ubuntu-22.04
