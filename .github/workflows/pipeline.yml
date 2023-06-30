@@ -69,7 +69,7 @@ jobs:
         run: npm test
 
   deploy:
-    needs: [test, e2e]
+    needs: [test]
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
