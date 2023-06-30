@@ -1,9 +1,16 @@
-const { defineConfig } = require('cypress')
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'http://localhost:5000',
+    baseUrl: "http://localhost:5000",
   },
+
   video: false,
-  supportFile: false,
-})
+
+  component: {
+    devServer: {
+      framework: "react",
+      bundler: "webpack",
+    },
+  },
+});
